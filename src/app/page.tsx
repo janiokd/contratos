@@ -9,7 +9,7 @@ type CardData = {
 };
 
 const cards: CardData[] = [
-  {
+  { 
     img: "Group1.png",
     title: "Escolha o formulário",
     description: "Mais de 200 opções de formulários disponíveis para você escolher.",
