@@ -1,5 +1,5 @@
 import BtnCadastrar from "./components/BtnCadastrar";
-import { Search } from "lucide-react";
+import { FaSearch } from 'react-icons/fa';
 
 
 type CardData = {
@@ -9,7 +9,7 @@ type CardData = {
 };
 
 const cards: CardData[] = [
-  { 
+  {
     img: "Group1.png",
     title: "Escolha o formulário",
     description: "Mais de 200 opções de formulários disponíveis para você escolher.",
@@ -88,13 +88,14 @@ export default function Home() {
 
 
           <div className="relative w-[781px] h-[48px] mb-10">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
             <input
               type="text"
               placeholder="Procure o seu formulário aqui"
               className="w-full h-full pl-10 pr-4 border-2 border-[#DFDFDF] rounded-[8px] placeholder-gray-400 focus:outline-none focus:border-[#104B64] shadow-[0px_8px_16px_0px_rgba(0,0,0,0.08),_0px_0px_4px_0px_rgba(0,0,0,0.04)]"
             />
           </div>
+
 
 
           <div className="w-[781px] font-roboto text-[16px] flex justify-center gap-12">
