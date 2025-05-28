@@ -36,7 +36,7 @@ export default function Home() {
     <>
 
       <section className="bg-white py-32">
-        <div className="max-w-[1158px] h-[363px] mx-auto flex justify-between px-4">
+        <div className="max-w-[1458px] h-[363px] mx-auto flex justify-between px-4">
           <div className="w-1/2 flex flex-col justify-center">
             <h2 className="text-5xl font-bold font-roboto mb-4">
               Contrato <span className="text-[#104B64]">aqui</span>
