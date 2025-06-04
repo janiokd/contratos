@@ -1,4 +1,11 @@
-export default function BtnComprar({ children, href }) {
+import React, { ReactNode } from 'react';
+
+interface BtnComprarProps {
+  children: ReactNode;
+  href: string;
+}
+
+export default function BtnComprar({ children, href }: BtnComprarProps) {
   return (
     <a
       href={href}

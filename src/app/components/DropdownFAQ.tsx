@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 
+type DropdownCardProps = {
+  title: string;
+  description: string;
+};
 
-export default function DropdownCard({ 
-  title, 
-  description, 
-  
-}) {
+export default function DropdownCard({ title, description }: DropdownCardProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
@@ -33,17 +33,10 @@ export default function DropdownCard({
       </div>
 
       {dropdownOpen && (
-        <div
-          className="mx-auto w-[1258px] h-[413px] bg-white rounded-[16px] pt-4 pr-4 pl-4 text-gray-700 shadow-[0px_8px_16px_rgba(0,0,0,0.08)] flex justify-between"
-        >
+        <div className="mx-auto w-[1258px] h-[413px] bg-white rounded-[16px] pt-4 pr-4 pl-4 text-gray-700 shadow-[0px_8px_16px_rgba(0,0,0,0.08)] flex justify-between">
           <div className="w-[672px] flex flex-col ml-5 gap-6">
             <p className="text-[20px] leading-relaxed">{description}</p>
-            
-
-            
           </div>
-
-        
         </div>
       )}
     </>

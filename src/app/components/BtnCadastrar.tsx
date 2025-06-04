@@ -1,4 +1,9 @@
-export default function BtnCadastrar({ children, href }) {
+type BtnCadastrarProps = {
+  children: React.ReactNode;
+  href: string;
+};
+
+export default function BtnCadastrar({ children, href }: BtnCadastrarProps) {
   return (
     <a
       href={href}

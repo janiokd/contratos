@@ -12,7 +12,7 @@ export default function Footer() {
 
         </div>
 
-
+ 
         <div className="flex-1">
           <h2 className="text-xl font-bold mb-4">Menu</h2>
           <ul className="mb-4 space-y-2">

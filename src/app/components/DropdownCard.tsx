@@ -4,13 +4,23 @@ import { useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import BtnComprar from './BtnComprar';
 
-export default function DropdownCard({ 
-  title, 
-  description, 
-  price, 
-  imageSrc, 
-  imageAlt = 'Imagem do produto' 
-}) {
+interface DropdownCardProps {
+  title: string;
+  description: string;
+  price: string;
+  imageSrc: string;
+  btnHref: string;
+  imageAlt?: string;
+}
+
+export default function DropdownCard({
+  title,
+  description,
+  price,
+  imageSrc,
+  btnHref,
+  imageAlt = 'Imagem do produto',
+}: DropdownCardProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
@@ -42,7 +52,7 @@ export default function DropdownCard({
             <p className="text-[20px] leading-relaxed">{description}</p>
             <h2 className="font-bold text-[24px]">Valor: {price}</h2>
 
-            <BtnComprar href="#">Comprar</BtnComprar>
+            <BtnComprar href={btnHref}>Comprar</BtnComprar>
           </div>
 
           <div className="w-[334px] h-[573px] ml-auto">
