@@ -124,10 +124,9 @@ export default function Sobre(){
               className="font-roboto text-[30px] leading-8"
               style={{ fontWeight: 400, letterSpacing: '0%' }}
             >
-              {' '}
-              "Proin finibus magna ut justo laoreet, vel facilisis sem cursus. Mauris pulvinar,
+              Proin finibus magna ut justo laoreet, vel facilisis sem cursus. Mauris pulvinar,
               neque at fermentum condimentum, nunc magna vehicula ex, ut dapibus odio lorem eu
-              libero."
+              libero.
             </p>
           </div>
         </div>

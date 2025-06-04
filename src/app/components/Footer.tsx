@@ -1,5 +1,6 @@
 import { FaWhatsapp } from 'react-icons/fa'
 import { FaEnvelope } from 'react-icons/fa'
+import Link from 'next/link'
 
 export default function Footer() {
   return (
@@ -16,12 +17,24 @@ export default function Footer() {
         <div className="flex-1">
           <h2 className="text-xl font-bold mb-4">Menu</h2>
           <ul className="mb-4 space-y-2">
-            <li><a href="/" className="hover:text-[#0990BA] transition">Home</a></li>
-            <li><a href="/sobre" className="hover:text-[#0990BA] transition">Sobre Nós</a></li>
-            <li><a href="/formulario" className="hover:text-[#0990BA] transition">Formulários eletrônicos</a></li>
-            <li><a href="/faq" className="hover:text-[#0990BA] transition">Perguntas frequentes</a></li>
-            <li><a href="/contato" className="hover:text-[#0990BA] transition">Contato</a></li>
-            <li><a href="#" className="hover:text-[#0990BA] transition">Área administrativa</a></li>
+            <li>
+        <Link href="/" className="hover:text-[#0990BA] transition">Home</Link>
+          </li>
+            <li>
+              <Link href="/sobre" className="hover:text-[#0990BA] transition">Sobre Nós</Link>
+            </li>
+            <li>
+              <Link href="/formulario" className="hover:text-[#0990BA] transition">Formulários eletrônicos</Link>
+            </li>
+            <li>
+              <Link href="/faq" className="hover:text-[#0990BA] transition">Perguntas frequentes</Link>
+            </li>
+            <li>
+              <Link href="/contato" className="hover:text-[#0990BA] transition">Contato</Link>
+            </li>
+            <li>
+              <Link href="#" className="hover:text-[#0990BA] transition">Área administrativa</Link>
+            </li>
           </ul>
 
         </div>

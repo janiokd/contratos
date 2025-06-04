@@ -1,4 +1,5 @@
 import BtnCadastrar from './BtnCadastrar';
+import Link from 'next/link';
 
 export default function Header() {
   return (
@@ -7,11 +8,21 @@ export default function Header() {
         <img src="/logo.png" alt="Logo" className="w-[247px] h-[246px]" />
 
         <ul className="flex space-x-[64px] w-[955px] text-white text-xl leading-6">
-          <li><a href="/" className="hover:text-[#0990BA] transition">Home</a></li>
-          <li><a href="/sobre" className="hover:text-[#0990BA] transition">Sobre Nós</a></li>
-          <li><a href="/formulario" className="hover:text-[#0990BA] transition">Formulários eletrônicos</a></li>
-          <li><a href="/faq" className="hover:text-[#0990BA] transition">Perguntas frequentes</a></li>
-          <li><a href="/contato" className="hover:text-[#0990BA] transition">Contato</a></li>
+          <li>
+            <Link href="/" className="hover:text-[#0990BA] transition">Home</Link>
+          </li>
+          <li>
+            <Link href="/sobre" className="hover:text-[#0990BA] transition">Sobre Nós</Link>
+          </li>
+          <li>
+            <Link href="/formulario" className="hover:text-[#0990BA] transition">Formulários eletrônicos</Link>
+          </li>
+          <li>
+            <Link href="/faq" className="hover:text-[#0990BA] transition">Perguntas frequentes</Link>
+          </li>
+          <li>
+            <Link href="/contato" className="hover:text-[#0990BA] transition">Contato</Link>
+          </li>
         </ul>
 
         <div className="flex gap-[19px]">       
