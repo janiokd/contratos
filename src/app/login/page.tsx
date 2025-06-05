@@ -40,11 +40,11 @@ export default function Login() {
       <div
         className="bg-[#8568AC1A] p-8 rounded-lg w-full max-w-[744px] h-auto flex flex-col justify-center shadow-lg"
       >
-        <h2 className="text-[48px] sm:text-[64px] text-[#104B64] font-bold mb-6 text-center font-[Core Sans D]">
+        <h2 className=" text-[48px] sm:text-[64px] text-[#104B64] font-bold mb-6 text-center font-[Core Sans D]">
           Login
         </h2>
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
-          <div className="mb-4 w-full max-w-[472px]">
+          <div className=" mb-4 w-full max-w-[472px]">
             <label
               htmlFor="email"
               className="block text-sm font-medium text-gray-700 mb-2"
@@ -56,7 +56,7 @@ export default function Login() {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`w-full h-[56px] px-4 border ${
+              className={`bg-[#fff] w-full h-[56px] px-4 ${
                 errors.email ? 'border-red-500' : 'border-gray-300'
               } rounded-[16px] focus:outline-none focus:ring-2 focus:ring-[#0990BA]`}
               required
@@ -79,7 +79,7 @@ export default function Login() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className={`w-full h-[56px] px-4 pr-12 border ${
+                className={`bg-[#fff] w-full h-[56px] px-4 pr-12 ${
                   errors.password ? 'border-red-500' : 'border-gray-300'
                 } rounded-[16px] focus:outline-none focus:ring-2 focus:ring-[#0990BA]`}
                 required

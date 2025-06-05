@@ -25,37 +25,39 @@ export default function DropdownCard({
 
   return (
     <>
+      
       <div
-        className="mx-auto flex justify-between items-center w-[1458px] h-[64px] mb-5 rounded-[39px] px-6 cursor-pointer select-none transition-colors duration-300"
-        style={{ backgroundColor: dropdownOpen ? '#104B64' : '#8568AC1A' }}
+        className={`mx-auto flex justify-between items-center w-full max-w-7xl h-[64px] mb-4 px-6 rounded-[39px] cursor-pointer select-none transition-colors duration-300 ${
+          dropdownOpen ? 'bg-[#104B64]' : 'bg-[#8568AC1A]'
+        }`}
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
         <span
-          className={`font-medium text-xl transition-colors duration-300 ${
+          className={`font-medium text-lg sm:text-xl transition-colors duration-300 ${
             dropdownOpen ? 'text-white' : 'text-[#000]'
           }`}
         >
           {title}
         </span>
         <FaChevronDown
-          className={`w-6 h-6 transition-transform duration-300 ${
+          className={`w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 ${
             dropdownOpen ? 'rotate-180 text-white' : 'text-[#000]'
           }`}
         />
       </div>
 
+  
       {dropdownOpen && (
-        <div
-          className="mx-auto w-[1258px] h-[613px] bg-white rounded-[16px] pt-4 pr-4 pl-4 text-gray-700 shadow-[0px_8px_16px_rgba(0,0,0,0.08)] flex justify-between"
-        >
-          <div className="w-[672px] flex flex-col ml-5 gap-6">
-            <p className="text-[20px] leading-relaxed">{description}</p>
-            <h2 className="font-bold text-[24px]">Valor: {price}</h2>
-
+        <div className="mx-auto w-full max-w-7xl bg-white rounded-[16px] p-6 text-gray-700 shadow-[0px_8px_16px_rgba(0,0,0,0.08)] flex flex-col lg:flex-row gap-6">
+      
+          <div className="flex-1 flex flex-col gap-6">
+            <p className="text-base sm:text-lg leading-relaxed">{description}</p>
+            <h2 className="font-bold text-lg sm:text-xl">Valor: {price}</h2>
             <BtnComprar href={btnHref}>Comprar</BtnComprar>
           </div>
 
-          <div className="w-[334px] h-[573px] ml-auto">
+          
+          <div className="w-full lg:w-[300px] h-auto max-h-[400px]">
             <img
               src={imageSrc}
               alt={imageAlt}
