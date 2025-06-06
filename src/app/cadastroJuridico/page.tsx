@@ -5,29 +5,27 @@ import BtnComprar from "../components/BtnComprar";
 import Input from "../components/Input";
 
 interface Errors {
-  nome?: string;
-  cpf?: string; 
-  rg?: string;
-  dataNascimento?: string;
-  estadoCivil?: string;
+  razaoSocial?: string;
+  cnpj?: string;
   cep?: string;
-  endereco?: string;
+  rua?: string;
   numero?: string;
   complemento?: string;
   cidade?: string;
   estado?: string;
   telefone?: string;
+  nomeResponsavel?: string;
+  cpfResponsavel?: string;
   whatsapp?: string;
+  aceitaTermos?: string;
+  aceitaPolitica?: string;
 }
 
-export default function Cadastrofisica() {
-  const [nome, setNome] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [rg, setRg] = useState('');
-  const [dataNascimento, setDataNascimento] = useState('');
-  const [estadoCivil, setEstadoCivil] = useState('');
+export default function CadastroJuridico() {
+  const [razaoSocial, setRazaoSocial] = useState('');
+  const [cnpj, setCnpj] = useState('');
   const [cep, setCep] = useState('');
-  const [endereco, setEndereco] = useState('');
+  const [rua, setRua] = useState('');
   const [numero, setNumero] = useState('');
   const [complemento, setComplemento] = useState('');
   const [cidade, setCidade] = useState('');
@@ -35,6 +33,8 @@ export default function Cadastrofisica() {
   const [telefone, setTelefone] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
   const [whatsappIgual, setWhatsappIgual] = useState<boolean | null>(null);
+  const [nomeResponsavel, setNomeResponsavel] = useState('');
+  const [cpfResponsavel, setCpfResponsavel] = useState('');
   const [termosUso, setTermosUso] = useState(false);
   const [politicaPrivacidade, setPoliticaPrivacidade] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
@@ -43,27 +43,38 @@ export default function Cadastrofisica() {
     e.preventDefault();
 
     const newErrors: Errors = {};
-
-    if (!nome.trim()) newErrors.nome = "Obrigatório";
-    if (!cpf.trim()) newErrors.cpf = "Obrigatório";
-    if (!rg.trim()) newErrors.rg = "Obrigatório";
-    if (!dataNascimento.trim()) newErrors.dataNascimento = "Obrigatório";
-    if (!estadoCivil.trim()) newErrors.estadoCivil = "Obrigatório";
+    if (!razaoSocial.trim()) newErrors.razaoSocial = "Obrigatório";
+    if (!cnpj.trim()) newErrors.cnpj = "Obrigatório";
     if (!cep.trim()) newErrors.cep = "Obrigatório";
-    if (!endereco.trim()) newErrors.endereco = "Obrigatório";
+    if (!rua.trim()) newErrors.rua = "Obrigatório";
     if (!numero.trim()) newErrors.numero = "Obrigatório";
     if (!cidade.trim()) newErrors.cidade = "Obrigatório";
     if (!estado.trim()) newErrors.estado = "Obrigatório";
     if (!telefone.trim()) newErrors.telefone = "Obrigatório";
+    if (!nomeResponsavel.trim()) newErrors.nomeResponsavel = "Obrigatório";
+    if (!cpfResponsavel.trim()) newErrors.cpfResponsavel = "Obrigatório";
     if (!whatsapp.trim()) newErrors.whatsapp = "Obrigatório";
+    if (!termosUso) newErrors.aceitaTermos = "Você precisa aceitar os termos";
+    if (!politicaPrivacidade) newErrors.aceitaPolitica = "Você precisa aceitar a política";
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
       console.log({
-        nome, cpf, rg, dataNascimento, estadoCivil, cep, endereco,
-        numero, complemento, cidade, estado, telefone, whatsapp,
-        termosUso, politicaPrivacidade
+        razaoSocial,
+        cnpj,
+        cep,
+        rua,
+        numero,
+        complemento,
+        cidade,
+        estado,
+        telefone,
+        nomeResponsavel,
+        cpfResponsavel,
+        whatsapp,
+        termosUso,
+        politicaPrivacidade,
       });
     }
   };
@@ -75,33 +86,13 @@ export default function Cadastrofisica() {
     >
       <div className="w-full max-w-[600px]">
         <h2 className="font-bold text-6xl sm:text-6xl text-[#104B64]">Cadastro</h2>
-        <p className="text-2xl mt-6">Você escolheu pessoa física</p>
+        <p className="text-2xl mt-6">Você escolheu pessoa jurídica</p>
 
+        <Input className="w-[472px]" label="Razão Social" id="razaoSocial" value={razaoSocial} onChange={setRazaoSocial} error={errors.razaoSocial} />
+        <Input className="w-[230px]" label="CNPJ" id="cnpj" value={cnpj} onChange={setCnpj} error={errors.cnpj} />
 
-        <Input className="w-[472px]" label="Nome" id="nome" value={nome} onChange={setNome} error={errors.nome} placeholder="Nome completo" />
-        <Input className="w-[230px]" label="CPF" id="cpf" value={cpf} onChange={setCpf} error={errors.cpf} placeholder="999.999.999-99" />
-        <Input className="w-[230px]" label="RG" id="rg" value={rg} onChange={setRg} error={errors.rg} placeholder="12.345.678-9" />
-        <Input className="w-[230px]" label="Data de Nascimento" id="dataNascimento" type="date" value={dataNascimento} onChange={setDataNascimento} error={errors.dataNascimento} />
-
-        {/* Estado Civil */}
-        <div className=" w-[230px] flex flex-col mt-6">
-          <label className="font-bold text-xl">Estado Civil</label>
-          <select
-            className="h-12 rounded-lg px-4 mt-1 shadow-md"
-            value={estadoCivil}
-            onChange={(e) => setEstadoCivil(e.target.value)}
-          >
-            <option value="">Selecione</option>
-            <option value="solteiro">Solteiro(a)</option>
-            <option value="casado">Casado(a)</option>
-            <option value="divorciado">Divorciado(a)</option>
-            <option value="viuvo">Viúvo(a)</option>
-          </select>
-          {errors.estadoCivil && <p className="text-sm text-red-500">{errors.estadoCivil}</p>}
-        </div>
-
-        <Input className="w-[230px]" label="CEP" id="cep" value={cep} onChange={setCep} error={errors.cep} placeholder="00000-000" />
-        <Input className="w-[472px]" label="Endereço" id="endereco" value={endereco} onChange={setEndereco} error={errors.endereco} placeholder="Rua, Avenida..." />
+        <Input className="w-[230px]" label="CEP" id="cep" value={cep} onChange={setCep} error={errors.cep} />
+        <Input className="w-[472px]" label="Rua" id="rua" value={rua} onChange={setRua} error={errors.rua} />
 
         <div className="flex gap-4">
           <Input className="w-[130px]" label="Número" id="numero" value={numero} onChange={setNumero} error={errors.numero} />
@@ -109,7 +100,7 @@ export default function Cadastrofisica() {
         </div>
 
         <div className="flex gap-4">
-          <Input className="w-[230px]" label="Cidade" id="cidade" value={cidade} onChange={setCidade} error={errors.cidade}  />
+          <Input label="Cidade" id="cidade" value={cidade} onChange={setCidade} error={errors.cidade} className="w-[230px]" />
           <div className="w-[230px] flex flex-col mt-6">
             <label className="font-bold text-xl">Estado</label>
             <select
@@ -126,8 +117,12 @@ export default function Cadastrofisica() {
           </div>
         </div>
 
+        <Input className="w-[472px]" label="Telefone" id="telefone" value={telefone} onChange={setTelefone} error={errors.telefone} />
 
-        <Input label="Telefone" id="telefone" value={telefone} onChange={setTelefone} error={errors.telefone} placeholder="(99) 99999-9999" />
+
+        <Input className="w-[472px]" label="Nome do Responsável" id="nomeResponsavel" value={nomeResponsavel} onChange={setNomeResponsavel} error={errors.nomeResponsavel} />
+        <Input className="w-[472px]" label="CPF do Responsável" id="cpfResponsavel" value={cpfResponsavel} onChange={setCpfResponsavel} error={errors.cpfResponsavel} />
+
 
         {/* WhatsApp igual */}
         <div className="mt-6">
@@ -160,10 +155,10 @@ export default function Cadastrofisica() {
           </div>
         </div>
 
-        <Input label="WhatsApp" id="whatsapp" value={whatsapp} onChange={setWhatsapp} error={errors.whatsapp} placeholder="(99) 99999-9999" />
+        <Input className="w-[472px]" label="WhatsApp" id="whatsapp" value={whatsapp} onChange={setWhatsapp} error={errors.whatsapp} />
 
         {/* Termos */}
-        <div className="mt-6">
+        <div className="mt-6 flex flex-col gap-2">
           <label className="flex items-center gap-2">
             <input type="checkbox" checked={termosUso} onChange={() => setTermosUso(!termosUso)} />
             Aceito os termos de uso
@@ -172,10 +167,11 @@ export default function Cadastrofisica() {
             <input type="checkbox" checked={politicaPrivacidade} onChange={() => setPoliticaPrivacidade(!politicaPrivacidade)} />
             Aceito a política de privacidade
           </label>
+          {errors.aceitaTermos && <p className="text-sm text-red-500">{errors.aceitaTermos}</p>}
+          {errors.aceitaPolitica && <p className="text-sm text-red-500">{errors.aceitaPolitica}</p>}
         </div>
 
-        <BtnComprar href="cadastroFinal">Continuar</BtnComprar>
-
+        <BtnComprar href="#">Continuar</BtnComprar>
       </div>
     </form>
   );

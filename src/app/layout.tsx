@@ -15,6 +15,10 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="pt-BR">
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
       <body className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow w-full px-4 sm:px-6 lg:px-8">{children}</main>
