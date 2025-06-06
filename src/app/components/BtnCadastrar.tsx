@@ -1,16 +1,21 @@
+'use client';
+
+import Link from 'next/link';
+import type { ReactNode } from 'react';
+
 type BtnCadastrarProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   href: string;
 };
 
 export default function BtnCadastrar({ children, href }: BtnCadastrarProps) {
   return (
-    <a
+    <Link
       href={href}
-      className="w-[179px] h-[48px] rounded-xl bg-[#0990BA] text-white
-                 flex items-center justify-center px-16 py-3 hover:bg-[#087ca2] transition"
+      className="min-w-[150px] h-[44px] rounded-xl bg-[#0990BA]  text-white 
+                 flex items-center justify-center px-4 hover:bg-white hover:text-[#104B64] transition text-sm"
     >
       {children}
-    </a>
+    </Link>
   );
 }
