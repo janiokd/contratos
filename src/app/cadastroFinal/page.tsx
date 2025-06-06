@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import BtnComprar from "../components/BtnComprar";
-import Input from "../components/Input";
+
 
 interface Errors {
     senha?: string;
