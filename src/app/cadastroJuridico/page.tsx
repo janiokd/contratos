@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import BtnComprar from "../components/BtnComprar";
+import { useRouter } from "next/navigation";
 import Input from "../components/Input";
 
 interface Errors {
@@ -22,6 +22,7 @@ interface Errors {
 }
 
 export default function CadastroJuridico() {
+  const router = useRouter(); 
   const [razaoSocial, setRazaoSocial] = useState('');
   const [cnpj, setCnpj] = useState('');
   const [cep, setCep] = useState('');
@@ -60,22 +61,7 @@ export default function CadastroJuridico() {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      console.log({
-        razaoSocial,
-        cnpj,
-        cep,
-        rua,
-        numero,
-        complemento,
-        cidade,
-        estado,
-        telefone,
-        nomeResponsavel,
-        cpfResponsavel,
-        whatsapp,
-        termosUso,
-        politicaPrivacidade,
-      });
+       router.push('/cadastroFinal');
     }
   };
 
@@ -124,7 +110,6 @@ export default function CadastroJuridico() {
         <Input className="w-[472px]" label="CPF do Responsável" id="cpfResponsavel" value={cpfResponsavel} onChange={setCpfResponsavel} error={errors.cpfResponsavel} />
 
 
-        {/* WhatsApp igual */}
         <div className="mt-6">
           <p className="font-bold text-xl mb-2">Esse número também é WhatsApp?</p>
           <div className="flex gap-4">
@@ -137,8 +122,7 @@ export default function CadastroJuridico() {
                   setWhatsappIgual(true);
                 }}
                 checked={whatsappIgual === true}
-              />
-              Sim
+              />Sim
             </label>
             <label className="flex items-center gap-2">
               <input
@@ -149,15 +133,13 @@ export default function CadastroJuridico() {
                   setWhatsappIgual(false);
                 }}
                 checked={whatsappIgual === false}
-              />
-              Não
+              />Não
             </label>
           </div>
         </div>
 
         <Input className="w-[472px]" label="WhatsApp" id="whatsapp" value={whatsapp} onChange={setWhatsapp} error={errors.whatsapp} />
 
-        {/* Termos */}
         <div className="mt-6 flex flex-col gap-2">
           <label className="flex items-center gap-2">
             <input type="checkbox" checked={termosUso} onChange={() => setTermosUso(!termosUso)} />
@@ -171,7 +153,10 @@ export default function CadastroJuridico() {
           {errors.aceitaPolitica && <p className="text-sm text-red-500">{errors.aceitaPolitica}</p>}
         </div>
 
-        <BtnComprar href="#">Continuar</BtnComprar>
+        <button
+          type="submit"
+          className="mt-6 w-[158px] h-[48px] rounded-xl bg-[#0990BA] text-white flex items-center justify-center hover:bg-[#087ca2] transition"
+        >Continuar</button>
       </div>
     </form>
   );

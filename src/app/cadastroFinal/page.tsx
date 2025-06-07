@@ -68,7 +68,7 @@ export default function Cadastrofinal() {
                         </label>
                     </div>
 
-                    {/* MENSAGENS QUANDO SELECIONA O S/N */}
+                    
                     {manterCadastro === true && (
                         <div className="mt-4 text-gray-700 text-base">
                             <p className="mb-2">
@@ -89,7 +89,7 @@ export default function Cadastrofinal() {
                     )}
                 </div>
 
-                {/* SENHA */}
+               
                 <div className="mt-8 w-full">
                     <label htmlFor="senha" className="block font-bold mb-2 text-xl ">
                         Crie uma senha com letras e números

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import BtnComprar from "../components/BtnComprar";
+import { useRouter } from "next/navigation"; 
 import Input from "../components/Input";
 
 interface Errors {
@@ -21,6 +21,7 @@ interface Errors {
 }
 
 export default function Cadastrofisica() {
+  const router = useRouter(); 
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
   const [rg, setRg] = useState('');
@@ -40,10 +41,11 @@ export default function Cadastrofisica() {
   const [errors, setErrors] = useState<Errors>({});
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault(); 
 
     const newErrors: Errors = {};
 
+    
     if (!nome.trim()) newErrors.nome = "Obrigatório";
     if (!cpf.trim()) newErrors.cpf = "Obrigatório";
     if (!rg.trim()) newErrors.rg = "Obrigatório";
@@ -59,31 +61,26 @@ export default function Cadastrofisica() {
 
     setErrors(newErrors);
 
+    
     if (Object.keys(newErrors).length === 0) {
-      console.log({
-        nome, cpf, rg, dataNascimento, estadoCivil, cep, endereco,
-        numero, complemento, cidade, estado, telefone, whatsapp,
-        termosUso, politicaPrivacidade
-      });
+      router.push('/cadastroFinal');
     }
   };
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit} 
       className="flex flex-col items-start justify-start min-h-screen bg-white px-6 sm:px-16 py-10 sm:py-20"
     >
       <div className="w-full max-w-[600px]">
         <h2 className="font-bold text-6xl sm:text-6xl text-[#104B64]">Cadastro</h2>
         <p className="text-2xl mt-6">Você escolheu pessoa física</p>
 
-
         <Input className="w-[472px]" label="Nome" id="nome" value={nome} onChange={setNome} error={errors.nome} placeholder="Nome completo" />
         <Input className="w-[230px]" label="CPF" id="cpf" value={cpf} onChange={setCpf} error={errors.cpf} placeholder="999.999.999-99" />
         <Input className="w-[230px]" label="RG" id="rg" value={rg} onChange={setRg} error={errors.rg} placeholder="12.345.678-9" />
         <Input className="w-[230px]" label="Data de Nascimento" id="dataNascimento" type="date" value={dataNascimento} onChange={setDataNascimento} error={errors.dataNascimento} />
 
-        {/* Estado Civil */}
         <div className=" w-[230px] flex flex-col mt-6">
           <label className="font-bold text-xl">Estado Civil</label>
           <select
@@ -109,7 +106,7 @@ export default function Cadastrofisica() {
         </div>
 
         <div className="flex gap-4">
-          <Input className="w-[230px]" label="Cidade" id="cidade" value={cidade} onChange={setCidade} error={errors.cidade}  />
+          <Input className="w-[230px]" label="Cidade" id="cidade" value={cidade} onChange={setCidade} error={errors.cidade} />
           <div className="w-[230px] flex flex-col mt-6">
             <label className="font-bold text-xl">Estado</label>
             <select
@@ -126,10 +123,8 @@ export default function Cadastrofisica() {
           </div>
         </div>
 
-
         <Input label="Telefone" id="telefone" value={telefone} onChange={setTelefone} error={errors.telefone} placeholder="(99) 99999-9999" />
 
-        {/* WhatsApp igual */}
         <div className="mt-6">
           <p className="font-bold text-xl mb-2">Esse número também é WhatsApp?</p>
           <div className="flex gap-4">
@@ -142,8 +137,7 @@ export default function Cadastrofisica() {
                   setWhatsappIgual(true);
                 }}
                 checked={whatsappIgual === true}
-              />
-              Sim
+              />Sim
             </label>
             <label className="flex items-center gap-2">
               <input
@@ -154,15 +148,13 @@ export default function Cadastrofisica() {
                   setWhatsappIgual(false);
                 }}
                 checked={whatsappIgual === false}
-              />
-              Não
+              />Não
             </label>
           </div>
         </div>
 
         <Input label="WhatsApp" id="whatsapp" value={whatsapp} onChange={setWhatsapp} error={errors.whatsapp} placeholder="(99) 99999-9999" />
 
-        {/* Termos */}
         <div className="mt-6">
           <label className="flex items-center gap-2">
             <input type="checkbox" checked={termosUso} onChange={() => setTermosUso(!termosUso)} />
@@ -174,8 +166,11 @@ export default function Cadastrofisica() {
           </label>
         </div>
 
-        <BtnComprar href="cadastroFinal">Continuar</BtnComprar>
-
+        
+        <button
+          type="submit"
+          className="mt-6 w-[158px] h-[48px] rounded-xl bg-[#0990BA] text-white flex items-center justify-center hover:bg-[#087ca2] transition"
+        >Continuar</button>
       </div>
     </form>
   );
