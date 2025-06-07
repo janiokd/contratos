@@ -4,8 +4,8 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#104B64] text-white py-12 px-4">
-      <div className="max-w-[1320px] mx-auto flex flex-col md:flex-row gap-[38px]">
+    <footer className="bg-[#104B64] text-white py-12">
+      <div className="max-w-[1320px] mx-auto px-4 flex flex-col md:flex-row gap-[38px]">
 
 
         <div className="flex-1">
@@ -14,13 +14,13 @@ export default function Footer() {
 
         </div>
 
- 
+
         <div className="flex-1">
           <h2 className="text-xl font-bold mb-4">Menu</h2>
           <ul className="mb-4 space-y-2">
             <li>
-        <Link href="/" className="hover:text-[#0990BA] transition">Home</Link>
-          </li>
+              <Link href="/" className="hover:text-[#0990BA] transition">Home</Link>
+            </li>
             <li>
               <Link href="/sobre" className="hover:text-[#0990BA] transition">Sobre Nós</Link>
             </li>

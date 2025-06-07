@@ -149,9 +149,10 @@ export default function Home() {
       </section>
 
 
-      <section className="w-screen bg-[#104B64]/10 py-20">
+      <section className="w-full bg-[#104B64]/10 py-20">
         <div className="max-w-[1320px] mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
-          <div className="w-full md:w-1/2 sm:-ml-6 md:-ml-10 lg:-ml-16">
+          <div className="w-full md:w-1/2">
+
             <img
               src="/Rectangle.png"
               alt="mesa de trabalho"

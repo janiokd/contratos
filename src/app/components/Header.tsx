@@ -18,8 +18,7 @@ export default function Header() {
 
   return (
     <header className="bg-[#104B64] w-full h-[80px] flex items-center font-poppins relative z-50">
-      <nav className="w-full max-w-[1320px] mx-auto px-6 md:px-8 lg:px-16 flex items-center justify-between">
-
+      <nav className="w-full px-6 md:px-8 lg:px-16 flex items-center justify-between">
         <Link href="/">
           <img src="/logo.png" alt="Logo" className="w-32 md:w-40 lg:w-60 h-auto cursor-pointer" />
         </Link>
