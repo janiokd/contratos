@@ -1,6 +1,6 @@
 export default function Sobre() {
   return (
-    <> 
+    <>
       
       <section className="bg-white py-20 px-4">
         <div className="max-w-[1458px] mx-auto px-4 md:px-0">
