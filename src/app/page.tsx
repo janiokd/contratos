@@ -93,7 +93,7 @@ export default function Home() {
           </p>
 
           <div className="w-full max-w-[781px] mx-auto mb-10">
-            {/* Barra de busca */}
+
             <div className="relative w-full h-[48px] mb-6">
               <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -105,7 +105,7 @@ export default function Home() {
               />
             </div>
 
-            {/* Duas colunas */}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
               <ul className="space-y-2">
                 {[
@@ -149,9 +149,9 @@ export default function Home() {
       </section>
 
 
-      <section className="w-full bg-[#104B64]/10 py-20">
+      <section className="w-screen bg-[#104B64]/10 py-20">
         <div className="max-w-[1320px] mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-1/2 sm:-ml-6 md:-ml-10 lg:-ml-16">
             <img
               src="/Rectangle.png"
               alt="mesa de trabalho"
@@ -163,11 +163,13 @@ export default function Home() {
             <p className="text-lg text-[#333] mb-6">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non mi sed. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est, magni at aliquam hic maxime iure aperiam dolorem similique distinctio amet dolore deleniti assumenda. Asperiores expedita laborum perspiciatis, explicabo corrupti sint?
             </p>
-            <BtnCadastrar href="cadastro" className="w-[220px] sm:w-[180px] text-base sm:text-sm px-6 sm:px-4"
-            >Cadastrar</BtnCadastrar>
+            <BtnCadastrar href="cadastro" className="w-[220px] sm:w-[180px] text-base sm:text-sm px-6 sm:px-4">
+              Cadastrar
+            </BtnCadastrar>
           </div>
         </div>
       </section>
+
     </>
   );
 }

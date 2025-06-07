@@ -13,12 +13,12 @@ export default function BtnCadastrar({ children, href, className = '' }: BtnCada
   return (
     <Link
       href={href}
-      className={`h-[48px] rounded-xl bg-[#0990BA] text-white
-                 flex items-center justify-center text-base px-6
-                 hover:bg-white hover:text-[#104B64] transition
+      className={`h-[44px] rounded-xl flex items-center justify-center text-sm px-6
+                 transition duration-200 bg-[#0990BA] text-white hover:bg-white hover:text-[#104B64]
                  ${className}`}
     >
       {children}
     </Link>
   );
 }
+
