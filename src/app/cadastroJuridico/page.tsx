@@ -85,23 +85,23 @@ export default function CadastroJuridico() {
           <Input className="w-[230px]" label="Complemento" id="complemento" value={complemento} onChange={setComplemento} />
         </div>
 
-        <div className="flex gap-4">
-          <Input label="Cidade" id="cidade" value={cidade} onChange={setCidade} error={errors.cidade} className="w-[230px]" />
-          <div className="w-[230px] flex flex-col mt-6">
-            <label className="font-bold text-xl">Estado</label>
-            <select
-              className="h-12 rounded-lg px-4 mt-2 shadow-md"
-              value={estado}
-              onChange={(e) => setEstado(e.target.value)}
-            >
-              <option value="">Selecione</option>
-              {["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"].map(sigla => (
-                <option key={sigla} value={sigla}>{sigla}</option>
-              ))}
-            </select>
-            {errors.estado && <p className="text-sm text-red-500">{errors.estado}</p>}
-          </div>
-        </div>
+        <div className="flex flex-col sm:flex-row gap-4">
+                  <Input className="w-full sm:max-w-[230px]" label="Cidade" id="cidade" value={cidade} onChange={setCidade} error={errors.cidade} />
+                  <div className="w-full sm:max-w-[230px] flex flex-col mt-6 sm:mt-5">
+                    <label className="font-bold text-xl">Estado</label>
+                    <select
+                      className="h-12 rounded-lg px-4 mt-2 shadow-md"
+                      value={estado}
+                      onChange={(e) => setEstado(e.target.value)}
+                    >
+                      <option value="">Selecione</option>
+                      {["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"].map(sigla => (
+                        <option key={sigla} value={sigla}>{sigla}</option>
+                      ))}
+                    </select>
+                    {errors.estado && <p className="text-sm text-red-500">{errors.estado}</p>}
+                  </div>
+                </div>
 
         <Input className="w-[472px]" label="Telefone" id="telefone" value={telefone} onChange={setTelefone} error={errors.telefone} />
 

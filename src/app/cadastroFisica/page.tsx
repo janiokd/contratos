@@ -42,10 +42,7 @@ export default function Cadastrofisica() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); 
-
     const newErrors: Errors = {};
-
-    
     if (!nome.trim()) newErrors.nome = "Obrigatório";
     if (!cpf.trim()) newErrors.cpf = "Obrigatório";
     if (!rg.trim()) newErrors.rg = "Obrigatório";
@@ -60,8 +57,6 @@ export default function Cadastrofisica() {
     if (!whatsapp.trim()) newErrors.whatsapp = "Obrigatório";
 
     setErrors(newErrors);
-
-    
     if (Object.keys(newErrors).length === 0) {
       router.push('/cadastroFinal');
     }
@@ -69,19 +64,23 @@ export default function Cadastrofisica() {
 
   return (
     <form
-      onSubmit={handleSubmit} 
-      className="flex flex-col items-start justify-start min-h-screen bg-white px-6 sm:px-16 py-10 sm:py-20"
+      onSubmit={handleSubmit}
+      className="flex flex-col items-start justify-start min-h-screen bg-white px-4 sm:px-10 py-10 sm:py-20"
     >
-      <div className="w-full max-w-[600px]">
-        <h2 className="font-bold text-6xl sm:text-6xl text-[#104B64]">Cadastro</h2>
-        <p className="text-2xl mt-6">Você escolheu pessoa física</p>
+      <div className="w-full max-w-[800px]">
+        <h2 className="font-bold text-[40px] sm:text-6xl text-[#104B64]">Cadastro</h2>
+        <p className="text-[20px] sm:text-2xl mt-6">Você escolheu pessoa física</p>
 
-        <Input className="w-[472px]" label="Nome" id="nome" value={nome} onChange={setNome} error={errors.nome} placeholder="Nome completo" />
-        <Input className="w-[230px]" label="CPF" id="cpf" value={cpf} onChange={setCpf} error={errors.cpf} placeholder="999.999.999-99" />
-        <Input className="w-[230px]" label="RG" id="rg" value={rg} onChange={setRg} error={errors.rg} placeholder="12.345.678-9" />
-        <Input className="w-[230px]" label="Data de Nascimento" id="dataNascimento" type="date" value={dataNascimento} onChange={setDataNascimento} error={errors.dataNascimento} />
+        <Input className="w-full max-w-[472px]" label="Nome" id="nome" value={nome} onChange={setNome} error={errors.nome} placeholder="Nome completo" />
 
-        <div className=" w-[230px] flex flex-col mt-6">
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Input className="w-full sm:max-w-[230px]" label="CPF" id="cpf" value={cpf} onChange={setCpf} error={errors.cpf} placeholder="999.999.999-99" />
+          <Input className="w-full sm:max-w-[230px]" label="RG" id="rg" value={rg} onChange={setRg} error={errors.rg} placeholder="12.345.678-9" />
+        </div>
+
+        <Input className="w-full sm:max-w-[230px]" label="Data de Nascimento" id="dataNascimento" type="date" value={dataNascimento} onChange={setDataNascimento} error={errors.dataNascimento} />
+
+        <div className="w-full sm:max-w-[230px] flex flex-col mt-6">
           <label className="font-bold text-xl">Estado Civil</label>
           <select
             className="h-12 rounded-lg px-4 mt-1 shadow-md"
@@ -97,17 +96,17 @@ export default function Cadastrofisica() {
           {errors.estadoCivil && <p className="text-sm text-red-500">{errors.estadoCivil}</p>}
         </div>
 
-        <Input className="w-[230px]" label="CEP" id="cep" value={cep} onChange={setCep} error={errors.cep} placeholder="00000-000" />
-        <Input className="w-[472px]" label="Endereço" id="endereco" value={endereco} onChange={setEndereco} error={errors.endereco} placeholder="Rua, Avenida..." />
+        <Input className="w-full sm:max-w-[230px]" label="CEP" id="cep" value={cep} onChange={setCep} error={errors.cep} placeholder="00000-000" />
+        <Input className="w-full max-w-[472px]" label="Endereço" id="endereco" value={endereco} onChange={setEndereco} error={errors.endereco} placeholder="Rua, Avenida..." />
 
-        <div className="flex gap-4">
-          <Input className="w-[130px]" label="Número" id="numero" value={numero} onChange={setNumero} error={errors.numero} />
-          <Input className="w-[230px]" label="Complemento" id="complemento" value={complemento} onChange={setComplemento} />
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Input className="w-full sm:max-w-[130px]" label="Número" id="numero" value={numero} onChange={setNumero} error={errors.numero} />
+          <Input className="w-full sm:max-w-[230px]" label="Complemento" id="complemento" value={complemento} onChange={setComplemento} />
         </div>
 
-        <div className="flex gap-4">
-          <Input className="w-[230px]" label="Cidade" id="cidade" value={cidade} onChange={setCidade} error={errors.cidade} />
-          <div className="w-[230px] flex flex-col mt-6">
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Input className="w-full sm:max-w-[230px]" label="Cidade" id="cidade" value={cidade} onChange={setCidade} error={errors.cidade} />
+          <div className="w-full sm:max-w-[230px] flex flex-col mt-6 sm:mt-5">
             <label className="font-bold text-xl">Estado</label>
             <select
               className="h-12 rounded-lg px-4 mt-2 shadow-md"
@@ -123,7 +122,7 @@ export default function Cadastrofisica() {
           </div>
         </div>
 
-        <Input label="Telefone" id="telefone" value={telefone} onChange={setTelefone} error={errors.telefone} placeholder="(99) 99999-9999" />
+        <Input className="w-full max-w-[472px]" label="Telefone" id="telefone" value={telefone} onChange={setTelefone} error={errors.telefone} placeholder="(99) 99999-9999" />
 
         <div className="mt-6">
           <p className="font-bold text-xl mb-2">Esse número também é WhatsApp?</p>
@@ -153,7 +152,7 @@ export default function Cadastrofisica() {
           </div>
         </div>
 
-        <Input label="WhatsApp" id="whatsapp" value={whatsapp} onChange={setWhatsapp} error={errors.whatsapp} placeholder="(99) 99999-9999" />
+        <Input className="w-full max-w-[472px]" label="WhatsApp" id="whatsapp" value={whatsapp} onChange={setWhatsapp} error={errors.whatsapp} placeholder="(99) 99999-9999" />
 
         <div className="mt-6">
           <label className="flex items-center gap-2">
@@ -166,7 +165,6 @@ export default function Cadastrofisica() {
           </label>
         </div>
 
-        
         <button
           type="submit"
           className="mt-6 w-[158px] h-[48px] rounded-xl bg-[#0990BA] text-white flex items-center justify-center hover:bg-[#087ca2] transition"
