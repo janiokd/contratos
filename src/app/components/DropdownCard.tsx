@@ -10,7 +10,7 @@ interface DropdownCardProps {
   price: string;
   imageSrc: string;
   btnHref: string;
-  imageAlt?: string;
+  imageAlt?: string; 
 }
 
 export default function DropdownCard({

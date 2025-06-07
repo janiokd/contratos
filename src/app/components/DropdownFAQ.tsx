@@ -7,7 +7,7 @@ type DropdownCardProps = {
   title: string;
   description: string;
 };
-
+ 
 export default function DropdownCard({ title, description }: DropdownCardProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 

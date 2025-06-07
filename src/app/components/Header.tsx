@@ -31,7 +31,7 @@ export default function Header() {
         </div>
 
        
-        <ul className="hidden lg:flex gap-24 text-white text-sm lg:text-lg items-center">
+        <ul className="hidden lg:flex gap-16 text-white text-sm lg:text-lg items-center">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
               <Link href={href} className="hover:text-[#0990BA] transition">

@@ -6,14 +6,17 @@ import type { ReactNode } from 'react';
 type BtnCadastrarProps = {
   children: ReactNode;
   href: string;
+  className?: string;
 };
 
-export default function BtnCadastrar({ children, href }: BtnCadastrarProps) {
+export default function BtnCadastrar({ children, href, className = '' }: BtnCadastrarProps) {
   return (
     <Link
       href={href}
-      className="min-w-[150px] h-[44px] rounded-xl bg-[#0990BA]  text-white 
-                 flex items-center justify-center px-4 hover:bg-white hover:text-[#104B64] transition text-sm"
+      className={`h-[48px] rounded-xl bg-[#0990BA] text-white
+                 flex items-center justify-center text-base px-6
+                 hover:bg-white hover:text-[#104B64] transition
+                 ${className}`}
     >
       {children}
     </Link>
