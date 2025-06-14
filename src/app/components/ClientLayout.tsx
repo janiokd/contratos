@@ -9,7 +9,7 @@ import HeaderCliente from '../painel/components/header-cliente';
 import CookieBanner from './CookieBanner';
 
 export default function ClientLayout({ children }: { children: ReactNode }) {
-  const pathname = usePathname(); 
+  
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const [hasMounted, setHasMounted] = useState(false);
 
