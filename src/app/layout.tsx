@@ -1,24 +1,17 @@
-import './globals.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import './global.css';
 import type { ReactNode } from 'react';
+import ClientLayout from './components/ClientLayout';
 
 export const metadata = {
   title: 'Meu Projeto',
   description: 'Meu site com Next.js e Tailwind CSS',
 };
 
-type RootLayoutProps = {
-  children: ReactNode;
-};
-
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow w-full px-4 sm:px-6 lg:px-8">{children}</main>
-        <Footer />
+      <body>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

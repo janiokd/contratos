@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Input from "../components/Input";
+import Link from "next/link";
 
 interface Errors {
   razaoSocial?: string;
@@ -22,7 +23,7 @@ interface Errors {
 }
 
 export default function CadastroJuridico() {
-  const router = useRouter(); 
+  const router = useRouter();
   const [razaoSocial, setRazaoSocial] = useState('');
   const [cnpj, setCnpj] = useState('');
   const [cep, setCep] = useState('');
@@ -55,13 +56,13 @@ export default function CadastroJuridico() {
     if (!nomeResponsavel.trim()) newErrors.nomeResponsavel = "Obrigatório";
     if (!cpfResponsavel.trim()) newErrors.cpfResponsavel = "Obrigatório";
     if (!whatsapp.trim()) newErrors.whatsapp = "Obrigatório";
-    if (!termosUso) newErrors.aceitaTermos = "Você precisa aceitar os termos";
-    if (!politicaPrivacidade) newErrors.aceitaPolitica = "Você precisa aceitar a política";
+    if (!termosUso) newErrors.aceitaTermos = "Obrigatório";
+    if (!politicaPrivacidade) newErrors.aceitaPolitica = "Obrigatório";
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-       router.push('/cadastroFinal');
+      router.push('/cadastroFinal');
     }
   };
 
@@ -74,10 +75,10 @@ export default function CadastroJuridico() {
         <h2 className="font-bold text-6xl sm:text-6xl text-[#104B64]">Cadastro</h2>
         <p className="text-2xl mt-6">Você escolheu pessoa jurídica</p>
 
-        <Input className="w-[472px]" label="Razão Social" id="razaoSocial" value={razaoSocial} onChange={setRazaoSocial} error={errors.razaoSocial} />
-        <Input className="w-[230px]" label="CNPJ" id="cnpj" value={cnpj} onChange={setCnpj} error={errors.cnpj} />
+        <Input className="w-[472px]" label="Razão Social" id="razaoSocial" value={razaoSocial} onChange={(value) => setRazaoSocial(value.replace(/\D/g, ''))} error={errors.razaoSocial} />
+        <Input className="w-[230px]" label="CNPJ" id="cnpj" value={cnpj} onChange={(value) => setCnpj(value.replace(/\D/g, ''))} error={errors.cnpj} />
 
-        <Input className="w-[230px]" label="CEP" id="cep" value={cep} onChange={setCep} error={errors.cep} />
+        <Input className="w-[230px]" label="CEP" id="cep" value={cep} onChange={(value) => setCep(value.replace(/\D/g, ''))} error={errors.cep} />
         <Input className="w-[472px]" label="Rua" id="rua" value={rua} onChange={setRua} error={errors.rua} />
 
         <div className="flex gap-4">
@@ -86,28 +87,28 @@ export default function CadastroJuridico() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4">
-                  <Input className="w-full sm:max-w-[230px]" label="Cidade" id="cidade" value={cidade} onChange={setCidade} error={errors.cidade} />
-                  <div className="w-full sm:max-w-[230px] flex flex-col mt-6 sm:mt-5">
-                    <label className="font-bold text-xl">Estado</label>
-                    <select
-                      className="h-12 rounded-lg px-4 mt-2 shadow-md"
-                      value={estado}
-                      onChange={(e) => setEstado(e.target.value)}
-                    >
-                      <option value="">Selecione</option>
-                      {["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"].map(sigla => (
-                        <option key={sigla} value={sigla}>{sigla}</option>
-                      ))}
-                    </select>
-                    {errors.estado && <p className="text-sm text-red-500">{errors.estado}</p>}
-                  </div>
-                </div>
+          <Input className="w-full sm:max-w-[230px]" label="Cidade" id="cidade" value={cidade} onChange={setCidade} error={errors.cidade} />
+          <div className="w-full sm:max-w-[230px] flex flex-col mt-6 sm:mt-5">
+            <label className="font-bold text-xl">Estado</label>
+            <select
+              className="h-12 rounded-lg px-4 mt-2 shadow-md"
+              value={estado}
+              onChange={(e) => setEstado(e.target.value)}
+            >
+              <option value="">Selecione</option>
+              {["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"].map(sigla => (
+                <option key={sigla} value={sigla}>{sigla}</option>
+              ))}
+            </select>
+            {errors.estado && <p className="text-sm text-red-500">{errors.estado}</p>}
+          </div>
+        </div>
 
-        <Input className="w-[472px]" label="Telefone" id="telefone" value={telefone} onChange={setTelefone} error={errors.telefone} />
+        <Input className="w-[472px]" label="Telefone" id="telefone" value={telefone} onChange={(value) => setTelefone(value.replace(/\D/g, ''))} error={errors.telefone} />
 
 
         <Input className="w-[472px]" label="Nome do Responsável" id="nomeResponsavel" value={nomeResponsavel} onChange={setNomeResponsavel} error={errors.nomeResponsavel} />
-        <Input className="w-[472px]" label="CPF do Responsável" id="cpfResponsavel" value={cpfResponsavel} onChange={setCpfResponsavel} error={errors.cpfResponsavel} />
+        <Input className="w-[472px]" label="CPF do Responsável" id="cpfResponsavel" value={cpfResponsavel} onChange={(value) => setCpfResponsavel(value.replace(/\D/g, ''))} error={errors.cpfResponsavel} />
 
 
         <div className="mt-6">
@@ -143,12 +144,24 @@ export default function CadastroJuridico() {
         <div className="mt-6 flex flex-col gap-2">
           <label className="flex items-center gap-2">
             <input type="checkbox" checked={termosUso} onChange={() => setTermosUso(!termosUso)} />
-            Aceito os termos de uso
+            <span>
+              Aceito os{" "}
+              <Link href="/termos-de-uso" className="text-black underline hover:text-gray-700" target="_blank">
+                termos de uso
+              </Link>
+            </span>
           </label>
+
           <label className="flex items-center gap-2">
             <input type="checkbox" checked={politicaPrivacidade} onChange={() => setPoliticaPrivacidade(!politicaPrivacidade)} />
-            Aceito a política de privacidade
+            <span>
+              Aceito a{" "}
+              <Link href="/politica-de-privacidade" className="text-black underline hover:text-gray-700" target="_blank">
+                política de privacidade
+              </Link>
+            </span>
           </label>
+
           {errors.aceitaTermos && <p className="text-sm text-red-500">{errors.aceitaTermos}</p>}
           {errors.aceitaPolitica && <p className="text-sm text-red-500">{errors.aceitaPolitica}</p>}
         </div>

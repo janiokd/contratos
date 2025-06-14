@@ -7,13 +7,10 @@ export default function Footer() {
     <footer className="bg-[#104B64] text-white py-12">
       <div className="max-w-[1320px] mx-auto px-4 flex flex-col md:flex-row gap-[38px]">
 
-
         <div className="flex-1">
           <h2 className="text-xl  font-bold mb-4">Contrato aqui</h2>
           <p className="mb-2 max-w-[136px]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos ducimus odit ratione fugiat distinctio laboriosam voluptas mollitia qui architecto. </p>
-
         </div>
-
 
         <div className="flex-1">
           <h2 className="text-xl font-bold mb-4">Menu</h2>
@@ -37,9 +34,7 @@ export default function Footer() {
               <Link href="#" className="hover:text-[#0990BA] transition">Área administrativa</Link>
             </li>
           </ul>
-
         </div>
-
 
         <div className="flex-1">
           <h2 className="text-xl font-bold mb-4">Contato</h2>
@@ -49,23 +44,27 @@ export default function Footer() {
 
             <a href="#" className="flex items-center gap-2 hover:text-[#0990BA] transition"        >
               <FaEnvelope size={24} />contato@contatoaqui.com.br</a>
-
           </ul>
         </div>
       </div>
+
       <div className="text-center text-sm mt-6 text-white/70 px-4">
         <p className="flex flex-wrap justify-center items-center gap-2">
-          <span>Copyright©2022, Contrato aqui.</span>
+          <span>© 2025 Contrato Aqui - Todos os direitos reservados</span>
           <span>|</span>
-          <span>Todos os direitos reservados</span>
+          
           <span>|</span>
-          <span className="underline cursor-pointer hover:text-[#0990BA] transition">
+          <Link href="/politica-privacidade" className="underline cursor-pointer hover:text-[#0990BA] transition">
             Política de privacidade
-          </span>
+          </Link>
           <span>|</span>
-          <span>
-            Desenvolvido por <span className="font-semibold">CloudOpss</span>
-          </span>
+          <Link href="/termos-de-uso" className="underline cursor-pointer hover:text-[#0990BA] transition">
+            Termos de uso
+          </Link>
+          <span>|</span>
+          <Link href="/legislacoes" className="underline cursor-pointer hover:text-[#0990BA] transition">
+            Legislação em destaque
+          </Link>
         </p>
       </div>
 

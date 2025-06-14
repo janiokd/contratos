@@ -1,6 +1,6 @@
 'use client';
 
-import DropdownFAQ from '../components/DropdownFAQ';
+import DropdownFAQ from '.././components/DropdownFAQ';
 
 export default function Faq() {
   return (

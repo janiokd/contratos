@@ -1,12 +1,13 @@
 'use client';
 
 import { useState } from "react";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 import Input from "../components/Input";
+import Link from "next/link";
 
 interface Errors {
   nome?: string;
-  cpf?: string; 
+  cpf?: string;
   rg?: string;
   dataNascimento?: string;
   estadoCivil?: string;
@@ -18,10 +19,12 @@ interface Errors {
   estado?: string;
   telefone?: string;
   whatsapp?: string;
+  termosUso?: string;
+  politicaPrivacidade?: string;
 }
 
 export default function Cadastrofisica() {
-  const router = useRouter(); 
+  const router = useRouter();
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
   const [rg, setRg] = useState('');
@@ -41,7 +44,7 @@ export default function Cadastrofisica() {
   const [errors, setErrors] = useState<Errors>({});
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); 
+    e.preventDefault();
     const newErrors: Errors = {};
     if (!nome.trim()) newErrors.nome = "Obrigatório";
     if (!cpf.trim()) newErrors.cpf = "Obrigatório";
@@ -55,6 +58,8 @@ export default function Cadastrofisica() {
     if (!estado.trim()) newErrors.estado = "Obrigatório";
     if (!telefone.trim()) newErrors.telefone = "Obrigatório";
     if (!whatsapp.trim()) newErrors.whatsapp = "Obrigatório";
+    if (!termosUso) newErrors.termosUso = "Obrigatório";
+    if (!politicaPrivacidade) newErrors.politicaPrivacidade = "Obrigatório";
 
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
@@ -74,8 +79,8 @@ export default function Cadastrofisica() {
         <Input className="w-full max-w-[472px]" label="Nome" id="nome" value={nome} onChange={setNome} error={errors.nome} placeholder="Nome completo" />
 
         <div className="flex flex-col sm:flex-row gap-4">
-          <Input className="w-full sm:max-w-[230px]" label="CPF" id="cpf" value={cpf} onChange={setCpf} error={errors.cpf} placeholder="999.999.999-99" />
-          <Input className="w-full sm:max-w-[230px]" label="RG" id="rg" value={rg} onChange={setRg} error={errors.rg} placeholder="12.345.678-9" />
+          <Input className="w-full sm:max-w-[230px]" label="CPF" id="cpf" value={cpf} onChange={(value) => setCpf(value.replace(/\D/g, ''))} error={errors.cpf} placeholder="999.999.999-99" />
+          <Input className="w-full sm:max-w-[230px]" label="RG" id="rg" value={rg} onChange={(value) => setRg(value.replace(/\D/g, ''))} error={errors.rg} placeholder="12.345.678-9" />
         </div>
 
         <Input className="w-full sm:max-w-[230px]" label="Data de Nascimento" id="dataNascimento" type="date" value={dataNascimento} onChange={setDataNascimento} error={errors.dataNascimento} />
@@ -96,7 +101,7 @@ export default function Cadastrofisica() {
           {errors.estadoCivil && <p className="text-sm text-red-500">{errors.estadoCivil}</p>}
         </div>
 
-        <Input className="w-full sm:max-w-[230px]" label="CEP" id="cep" value={cep} onChange={setCep} error={errors.cep} placeholder="00000-000" />
+        <Input className="w-full sm:max-w-[230px]" label="CEP" id="cep" value={cep} onChange={(value) => setCep(value.replace(/\D/g, ''))} error={errors.cep} placeholder="00000-000" />
         <Input className="w-full max-w-[472px]" label="Endereço" id="endereco" value={endereco} onChange={setEndereco} error={errors.endereco} placeholder="Rua, Avenida..." />
 
         <div className="flex flex-col sm:flex-row gap-4">
@@ -122,7 +127,7 @@ export default function Cadastrofisica() {
           </div>
         </div>
 
-        <Input className="w-full max-w-[472px]" label="Telefone" id="telefone" value={telefone} onChange={setTelefone} error={errors.telefone} placeholder="(99) 99999-9999" />
+        <Input className="w-full max-w-[472px]" label="Telefone" id="telefone" value={telefone} onChange={(value) => setTelefone(value.replace(/\D/g, ''))} error={errors.telefone} placeholder="(99) 99999-9999" />
 
         <div className="mt-6">
           <p className="font-bold text-xl mb-2">Esse número também é WhatsApp?</p>
@@ -152,17 +157,30 @@ export default function Cadastrofisica() {
           </div>
         </div>
 
-        <Input className="w-full max-w-[472px]" label="WhatsApp" id="whatsapp" value={whatsapp} onChange={setWhatsapp} error={errors.whatsapp} placeholder="(99) 99999-9999" />
+        <Input className="w-full max-w-[472px]" label="WhatsApp" id="whatsapp" value={whatsapp} onChange={(value) => setWhatsapp(value.replace(/\D/g, ''))} error={errors.whatsapp} placeholder="(99) 99999-9999" />
 
         <div className="mt-6">
           <label className="flex items-center gap-2">
             <input type="checkbox" checked={termosUso} onChange={() => setTermosUso(!termosUso)} />
-            Aceito os termos de uso
+            <span>
+              Aceito os{" "}
+              <Link href="/termos-de-uso" className="text-black underline hover:text-gray-700" target="_blank">
+                termos de uso
+              </Link>
+            </span>
           </label>
-          <label className="flex items-center gap-2">
+          {errors.termosUso && <p className="text-sm text-red-500 mt-1">{errors.termosUso}</p>}
+
+          <label className="flex items-center gap-2 mt-4">
             <input type="checkbox" checked={politicaPrivacidade} onChange={() => setPoliticaPrivacidade(!politicaPrivacidade)} />
-            Aceito a política de privacidade
+            <span>
+              Aceito a{" "}
+              <Link href="/politica-de-privacidade" className="text-black underline hover:text-gray-700" target="_blank">
+                política de privacidade
+              </Link>
+            </span>
           </label>
+          {errors.politicaPrivacidade && <p className="text-sm text-red-500 mt-1">{errors.politicaPrivacidade}</p>}
         </div>
 
         <button

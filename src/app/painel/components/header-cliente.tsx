@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
-import BtnCadastrar from './BtnCadastrar';
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -14,7 +14,7 @@ const navLinks = [
   { href: '/contato', label: 'Contato' },
 ];
 
-export default function Header() {
+export default function HeaderCliente() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname(); 
 
@@ -55,18 +55,7 @@ export default function Header() {
 
         
         <div className="hidden lg:flex gap-4 items-center">
-          <BtnCadastrar
-            href="/login"
-            className="min-w-[150px] border border-white text-white bg-transparent hover:bg-white hover:text-[#104B64]"
-          >
-            Entrar
-          </BtnCadastrar>
-          <BtnCadastrar
-            href="/cadastro"
-            className="min-w-[150px] bg-[#0990BA] text-white hover:bg-white hover:text-[#104B64]"
-          >
-            Cadastrar
-          </BtnCadastrar>
+         
         </div>
       </nav>
 
@@ -89,16 +78,8 @@ export default function Header() {
             );
           })}
 
-          <Link
-            href="/login"
-            onClick={() => setIsMenuOpen(false)}
-            className="min-w-[150px] h-[44px] rounded-xl border border-white text-white bg-transparent
-                     flex items-center justify-center px-4 hover:bg-white hover:text-[#104B64] transition text-sm"
-          >
-            Entrar
-          </Link>
-
-          <BtnCadastrar href="/cadastro">Cadastrar</BtnCadastrar>
+          
+          
         </div>
       )}
     </header>

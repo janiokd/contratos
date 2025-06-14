@@ -9,7 +9,7 @@ interface Contrato {
   description: string;
   price: string;
   imageSrc: string;
-  btnHref: string;
+  btnHref: string; 
 }
 
 const contratos: Contrato[] = [

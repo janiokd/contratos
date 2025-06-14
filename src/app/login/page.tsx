@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { useAuthStore } from '@/store/useAuth';
 
 type Errors = {
   email: string;
@@ -9,10 +11,13 @@ type Errors = {
 };
 
 export default function Login() {
+  const router = useRouter();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [errors, setErrors] = useState<Errors>({ email: '', password: '' });
+
+  const Login = useAuthStore((state) => state.login);
 
   const validateEmail = (email: string): boolean => /\S+@\S+\.\S+/.test(email);
 
@@ -31,8 +36,10 @@ export default function Login() {
     setErrors(newErrors);
 
     if (!newErrors.email && !newErrors.password) {
-      alert('Login enviado com sucesso!');
+      Login(); // ativa login global do Zustand
+      router.push('/painel'); // redireciona para o painel
     }
+
   };
 
   return (
@@ -56,9 +63,8 @@ export default function Login() {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`bg-[#fff] w-full h-[56px] px-4 ${
-                errors.email ? 'border-red-500' : 'border-gray-300'
-              } rounded-[16px] focus:outline-none focus:ring-2 focus:ring-[#0990BA]`}
+              className={`bg-[#fff] w-full h-[56px] px-4 ${errors.email ? 'border-red-500' : 'border-gray-300'
+                } rounded-[16px] focus:outline-none focus:ring-2 focus:ring-[#0990BA]`}
               required
             />
             {errors.email && (
@@ -79,9 +85,8 @@ export default function Login() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className={`bg-[#fff] w-full h-[56px] px-4 pr-12 ${
-                  errors.password ? 'border-red-500' : 'border-gray-300'
-                } rounded-[16px] focus:outline-none focus:ring-2 focus:ring-[#0990BA]`}
+                className={`bg-[#fff] w-full h-[56px] px-4 pr-12 ${errors.password ? 'border-red-500' : 'border-gray-300'
+                  } rounded-[16px] focus:outline-none focus:ring-2 focus:ring-[#0990BA]`}
                 required
               />
               <button
