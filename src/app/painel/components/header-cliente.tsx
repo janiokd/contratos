@@ -25,7 +25,6 @@ export default function HeaderCliente() {
   return (
     <header className="bg-[#104B64] w-full font-poppins relative z-50">
 
-      {/* Primeiro nav - topo com logo, título, menu hamburguer e dropdown */}
       <nav className="h-[80px] w-full px-6 md:px-8 lg:px-16 flex items-center justify-between relative z-50">
 
         <Link href="/">
@@ -57,7 +56,8 @@ export default function HeaderCliente() {
               <ChevronDown size={18} />
             </button>
 
-            {/* Dropdown com z-index alto para ficar acima do segundo nav */}
+
+
             {dropdownOpen && (
               <div className="absolute right-0 mt-2 w-56 bg-white shadow-lg rounded-l z-60 text-sm">
 
@@ -129,7 +129,7 @@ export default function HeaderCliente() {
         </div>
       </nav>
 
-      {/* Menu hamburguer mobile aberto */}
+      
       {isMenuOpen && (
         <div className="lg:hidden absolute top-[80px] left-0 w-full bg-[#104B64] flex flex-col items-center gap-6 py-6 text-white z-[9999] font-poppins text-base px-4 pointer-events-auto">
           {navLinks.map(({ href, label }) => {
@@ -150,7 +150,7 @@ export default function HeaderCliente() {
 
       <div className="h-[2px] bg-white w-full" />
 
-      {/* Segundo nav com links principais */}
+     
       <nav className="relative z-40 bg-[#104B64] w-full flex justify-between items-center py-4 px-4 md:px-16 text-white font-poppins text-sm md:text-base">
 
         <div>
