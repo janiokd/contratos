@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import {
-  FaPlus, FaTrash, FaList, FaPen,
-  FaEllipsisV, FaEye, FaSignature
-} from "react-icons/fa";
+import { FaPlus, FaTrash, FaList, FaPen, FaEllipsisV, FaEye, FaSignature } from "react-icons/fa";
 import EnvolvidoItem from "./EnvolvidoItem";
+import { useRouter } from "next/navigation";
+
 
 interface FormularioCardProps {
   nomeContrato: string;
@@ -43,6 +42,9 @@ export default function FormularioCard({
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  const router = useRouter();
+
+
   useEffect(() => {
     function handleClickFora(event: MouseEvent) {
       if (
@@ -60,7 +62,7 @@ export default function FormularioCard({
     <div className="max-w-[869px] w-full bg-white rounded-xl p-6 space-y-3 shadow-2xl border border-gray-200 mb-12">
       <div className="flex justify-between items-center">
         <h2 className="text-[#104B64] text-2xl font-semibold">{nomeContrato}</h2>
-        <div className="bg-[#104B64] text-white px-3 py-1 rounded text-sm font-medium">
+        <div className="bg-[#104B64] text-white px-3 py-1 rounded text-ls font-medium">
           #{numeroContrato}
         </div>
       </div>
@@ -97,11 +99,10 @@ export default function FormularioCard({
         <div className="mt-4">
           <p className="font-semibold text-base mb-1">Status:</p>
           <div
-            className={`inline-block px-3 py-1 rounded-md text-base font-medium mb-5 ${
-              statusPagamento === "pagamentoaceito"
-                ? "bg-[#8CB55F] text-white"
-                : "bg-yellow-400 text-white"
-            }`}
+            className={`inline-block px-3 py-1 rounded-md text-base font-medium mb-5 ${statusPagamento === "pagamentoaceito"
+              ? "bg-[#8CB55F] text-white"
+              : "bg-yellow-400 text-white"
+              }`}
           >
             {statusPagamento === "pagamentoaceito"
               ? "Pagamento Aceito"
@@ -140,9 +141,15 @@ export default function FormularioCard({
             }}
           />
         ))}
-        <button className="flex items-center text-sm text-[#104B64] hover:underline shadow-md bg-white px-3 py-2 rounded-md mb-4">
+        <button
+          type="button"
+          onClick={() => router.push("/painel/add-partes")}
+          className="flex items-center text-sm text-[#104B64] hover:underline shadow-md bg-white px-3 py-2 rounded-md mb-4"
+        >
           <FaPlus className="mr-1" /> Adicionar
         </button>
+
+
       </div>
 
       <hr className="border-gray-300" />
@@ -214,7 +221,7 @@ export default function FormularioCard({
             <FaTrash className="text-red-500 text-4xl mx-auto mb-4" />
             <h2 className="text-2xl font-semibold mb-5">Tem certeza que deseja excluir?</h2>
             <p className="text-lg text-white  mb-6">
-             Ao clicar em excluir, o formulário será excluído do site e do sistema.
+              Ao clicar em excluir, o formulário será excluído do site e do sistema.
             </p>
             <div className="flex justify-center gap-4">
               <button
@@ -226,7 +233,7 @@ export default function FormularioCard({
               <button
                 onClick={() => {
                   setMostrarModalExcluir(false);
-                  
+
                 }}
                 className="px-10 py-2 rounded-xl bg-red-600 text-semibold text-white"
               >
@@ -237,14 +244,14 @@ export default function FormularioCard({
         </div>
       )}
 
-      
+
       {mostrarModalResetar && (
         <div className="fixed inset-0 bg-blue-950/30 flex items-center justify-center z-50">
           <div className="bg-[#27275A] text-white rounded-xl p-6 w-[90%] max-w-md shadow-2xl text-center">
             <FaTrash className="text-red-500 text-4xl mx-auto mb-4" />
             <h2 className="text-2xl font-semibold mb-5">Tem certeza que deseja resetar?</h2>
             <p className="text-lg text-white  mb-6">
-            Ao clicar em resetar, o formulário será resetado do site e do sistema.
+              Ao clicar em resetar, o formulário será resetado do site e do sistema.
             </p>
             <div className="flex justify-center gap-4">
               <button
@@ -255,7 +262,7 @@ export default function FormularioCard({
               </button>
               <button
                 onClick={() => {
-                  
+
                   setMostrarModalResetar(false);
                 }}
                 className="px-10 py-2 rounded-xl bg-red-600 text-semibold text-white"
