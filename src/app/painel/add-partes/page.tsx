@@ -34,7 +34,7 @@ export default function AddPartesPage() {
   const [telefone, setTelefone] = useState('')
   const [qualificacao, setQualificacao] = useState('')
 
-  // Estado para erros
+  
   const [erros, setErros] = useState({
     nome: false,
     email: false,
@@ -56,7 +56,7 @@ export default function AddPartesPage() {
   }
 
   const enviarConvite = () => {
-    // Validação dos campos obrigatórios
+   
     const novoErros = {
       nome: nome.trim() === '',
       email: email.trim() === '',
@@ -64,7 +64,7 @@ export default function AddPartesPage() {
     }
     setErros(novoErros)
 
-    // Se algum campo obrigatório está vazio, não envia
+   
     if (Object.values(novoErros).some((erro) => erro)) {
       return
     }
@@ -122,7 +122,7 @@ export default function AddPartesPage() {
       </div>
 
       {/* Tabela de convites */}
-      <table className="w-full mt-6 text-left border border-gray-300 rounded-xl overflow-hidden">
+      <table className="w-full mt-6 text-left border border-gray-300 shadow-2xl rounded-xl overflow-hidden">
         <thead className="bg-[#27275A] text-white">
           <tr>
             <th className="p-3">Nome</th>
